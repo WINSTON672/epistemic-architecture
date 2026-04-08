@@ -1,3 +1,7 @@
 numpy>=1.24
 matplotlib>=3.7
 scipy>=1.11
+
+# Optional — only needed for benchmark/run_benchmark.py
+openai>=1.0          # for GPT models
+anthropic>=0.25      # for Claude models
