@@ -889,6 +889,28 @@ does not correspond to the actual computation. Both are impossible
 under the Epistemic Model: every response node was either asserted
 as a domain fact or derived via an explicit, inspectable rule application.
 
+\paragraph{Relation to retrieval-augmented generation and agent systems.}
+A natural objection is that retrieval-augmented generation (RAG)
+already solves the sycophancy problem by grounding responses in an
+external knowledge corpus. This objection conflates information access
+with selection discipline. RAG provides the LLM with true retrieved
+documents, but the LLM's response selection remains unconstrained:
+the model can still identify which retrieved passage most validates
+$H^{*(t)}$ and preferentially surface it. This is precisely the
+factual sycophant condition of Chandra et al.\ (Definition~2),
+which their Theorem~2 shows still produces $\pi > 0$ and hence
+non-zero catastrophic spiraling for any positive sycophancy rate.
+The same argument applies to agent systems that retrieve or query
+tools before responding: the underlying LLM still decides what to
+return, and that decision is still free to maximize
+$p_{\text{user}}(H = H^{*(t)} \mid \rho)$.
+The Epistemic Model's structural guarantee is not about information
+availability but about the selection function: by ordering responses
+by graph confidence rather than by validation score,
+$H^{*(t)}$ is removed from the selection criterion entirely, closing
+$I(H^{*(t)};\rho^{(t)}) = 0$ in a way that RAG cannot achieve
+without also replacing the selection mechanism.
+
 \paragraph{Limitations.}
 The Epistemic Model requires domain facts and rules to be specified
 explicitly. At scale, rule acquisition from data is non-trivial
